@@ -106,38 +106,32 @@
 
     <div id="player"></div>
 
-<script>
-  // Memuat IFrame Player API secara asinkron
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+<div style="text-align: center; margin-top: 20px;">
+    <a href="https://www.youtube.com/channel/UCf9cgpqha_JyLEegzFGGofw/videos" 
+       target="_blank" 
+       class="yt-button">
+       Kunjungi Channel YouTube Kami
+    </a>
+</div>
 
-  var player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      height: '390',
-      width: '640',
-      videoId: 'VIDEO_ID',
-      events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange
-      }
-    });
-  }
+<style>
+.yt-button {
+    background-color: #ff0000; /* Warna merah YouTube */
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background 0.3s ease;
+}
 
-  function onPlayerReady(event) {
-    // Video akan mulai tapi dalam keadaan mute jika ingin autoplay
-    event.target.mute();
-    event.target.playVideo();
-  }
-
-  function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.ENDED) {
-        alert("Video selesai ditonton!");
-    }
-  }
-</script> 
+.yt-button:hover {
+    background-color: #cc0000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+</style>
     
     <footer class="footer-main py-5 mt-auto">
         <div class="container">
