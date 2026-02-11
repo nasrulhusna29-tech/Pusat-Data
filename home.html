@@ -104,6 +104,41 @@
         </div>
     </section>
 
+    <div id="player"></div>
+
+<script>
+  // Memuat IFrame Player API secara asinkron
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '390',
+      width: '640',
+      videoId: 'VIDEO_ID',
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  function onPlayerReady(event) {
+    // Video akan mulai tapi dalam keadaan mute jika ingin autoplay
+    event.target.mute();
+    event.target.playVideo();
+  }
+
+  function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.ENDED) {
+        alert("Video selesai ditonton!");
+    }
+  }
+</script> 
+    
     <footer class="footer-main py-5 mt-auto">
         <div class="container">
             <div class="row gy-4">
